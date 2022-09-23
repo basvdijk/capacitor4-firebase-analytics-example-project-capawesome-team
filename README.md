@@ -69,5 +69,74 @@ You should see:
 
 ![image](https://user-images.githubusercontent.com/644550/191921431-16a7d4a3-b714-4f6f-9822-ddc82e289074.png)
 
+Then `make the project`
+
+![image](https://user-images.githubusercontent.com/644550/191921653-0567df0b-78b4-4cf1-bed7-f2f99dd551cc.png)
+
+## Setting the correct JDK
+
+I got this error:
+
+```
+A problem occurred evaluating project ':app'.
+> Failed to apply plugin 'com.android.internal.application'.
+   > Android Gradle plugin requires Java 11 to run. You are currently using Java 1.8.
+     Your current JDK is located in  /Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home/jre
+     You can try some of the following options:
+       - changing the IDE settings.
+       - changing the JAVA_HOME environment variable.
+       - changing `org.gradle.java.home` in `gradle.properties`.
+```
+
+Goto file -> Project structure
+
+![image](https://user-images.githubusercontent.com/644550/191921871-9c5fdfac-4465-4738-bc73-c65bed2f4f6b.png)
+
+SDK location -> Gradle Settings
+
+![image](https://user-images.githubusercontent.com/644550/191921942-1d54f24a-ae46-4682-99f3-21a95085909d.png)
+
+I chose "embedded JDK"
+
+![image](https://user-images.githubusercontent.com/644550/191922000-345938a9-e102-4a80-a198-d359ba06066b.png)
+
+Click "OK" twice to close the Gradle Settings and Project Strucure dialogs
+
+Then `make the project` again
+
+![image](https://user-images.githubusercontent.com/644550/191921653-0567df0b-78b4-4cf1-bed7-f2f99dd551cc.png)
+
+If everything ran fine you should see
+
+![image](https://user-images.githubusercontent.com/644550/191923181-55117d1d-87db-4272-b20b-61ba5f33eb23.png)
+
+## Run on Android device
+
+Connect your Android device via USB if you don't have already
+
+You should see your device in the dropdown:
+
+![image](https://user-images.githubusercontent.com/644550/191923464-0b9dcc13-5e2a-4f9d-bec4-810d1b7c3119.png)
+
+Now run the app via the green arrow icon or menu
+
+![image](https://user-images.githubusercontent.com/644550/191923561-60103611-2483-4add-8bd6-a4dfcca83d96.png)
+
+You should now see the event showing up in Firebase Analytics
+
+![image](https://user-images.githubusercontent.com/644550/191923801-e0c4ff9b-2251-4701-b391-eecce12d5b9f.png)
+
+
+
+## Enable Firebase Analytics debugging
+
+On the command line run (replace com.usto.cap4test) with your own:
+
+```bash
+adb shell setprop debug.firebase.analytics.app com.usto.cap4test
+```
+
+
+
 
 
