@@ -1,6 +1,11 @@
-# capacitor4-firebase-analyics-example-project-capawesome-team
+This is an example project in order to test the [@capacitor-firebase/analytics](https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/analytics) made by [capawesome-team](https://github.com/capawesome-team)
 
-# Android
+For me as a web developer it was quite some work to setup the native SDKs. Therefore I've made an Ionic VUE project to test the Capacitor Firebase Analytics plugin.
+
+Below you'll find how to setup the SDK for Android and iOS after you've configured your project in Firebase.
+
+
+# Setting up Firebase Analytics SDK for Android
 
 ## Add google-services.json
 
@@ -121,6 +126,8 @@ You should see your device in the dropdown:
 Now run the app via the green arrow icon or menu
 
 ![image](https://user-images.githubusercontent.com/644550/191923561-60103611-2483-4add-8bd6-a4dfcca83d96.png)
+
+On your Android device, in the app navigate to screens via the hamburger menu.
 
 You should now see the event showing up in Firebase Analytics
 
