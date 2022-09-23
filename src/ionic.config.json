@@ -1,0 +1,7 @@
+{
+  "name": "capawesome-firebase",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

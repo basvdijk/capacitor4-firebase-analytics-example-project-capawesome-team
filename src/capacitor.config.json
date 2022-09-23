@@ -1,0 +1,6 @@
+{
+  "appId": "com.usto.cap4test",
+  "appName": "capawesome-firebase",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
