@@ -4,8 +4,68 @@ For me as a web developer it was quite some work to setup the native SDKs. There
 
 Below you'll find how to setup the SDK for Android and iOS after you've configured your project in Firebase.
 
+# Setting up Firebase Analytics SDK for iOS - XCode Version 13.4.1 (13F100)
 
-# Setting up Firebase Analytics SDK for Android
+Open XCode `npx cap open ios`
+
+## Add GoogleService-Info.plist
+
+Right click on the `App` folder and choose `Add files to "App"`. I've read that dragging the file in could cause issues.
+
+![image](https://user-images.githubusercontent.com/644550/191928818-c215cfe9-f854-4fa4-8c0b-2b01bee90bf1.png)
+
+In the file picker navigate to your `GoogleService-Info.plist` and add it
+
+It should now appear in the file tree
+
+![image](https://user-images.githubusercontent.com/644550/191929040-928c19c0-ac5a-45fd-8d4e-68d82dec0068.png)
+
+## Add Firebase SDK for iOS
+
+Choose File -> Add packages
+
+![image](https://user-images.githubusercontent.com/644550/191929306-560a4d9b-fd3f-4516-8d67-7924491e1828.png)
+
+Search in the top right for `https://github.com/firebase/firebase-ios-sdk`
+
+In the `Add to project` dropdown choose "App"
+
+![image](https://user-images.githubusercontent.com/644550/191929496-5016265b-32c4-4cc7-ac16-54247150954f.png)
+
+Click "Add package"
+
+A popup appears
+
+![image](https://user-images.githubusercontent.com/644550/191929673-b21a7514-c555-4fc3-ac02-404e58f9a6da.png)
+
+Select the package product "FirebaseAnalytics" and click "Add Package"
+
+![image](https://user-images.githubusercontent.com/644550/191930031-7f9f4e45-0ca1-4245-b955-3c99fa0a9d0e.png)
+
+At the bottom of the tree you should see a "Package Dependencies" section
+
+![image](https://user-images.githubusercontent.com/644550/191930133-52a16024-d771-4b15-91c9-70f4941d91c7.png)
+
+
+## Add FirebaseAnalytics to podfile
+
+Open the `Podfile`
+
+![image](https://user-images.githubusercontent.com/644550/191928282-f95957b0-499a-4d7f-b60d-35112e7dd8ac.png)
+
+Add the line 
+
+`pod 'CapacitorFirebaseAnalytics/AnalyticsWithoutAdIdSupport', :path => '../../node_modules/@capacitor-firebase/analytics'`
+
+or 
+
+`pod 'CapacitorFirebaseAnalytics/Analytics', :path => '../../node_modules/@capacitor-firebase/analytics'`
+
+If you want to have the IDFA collection capability enabled
+
+
+
+# Setting up Firebase Analytics SDK for Android - Android Studio Dolphin | 2021.3.1
 
 ## Add google-services.json
 
