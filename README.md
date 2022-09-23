@@ -143,6 +143,19 @@ On the command line run (replace com.usto.cap4test) with your own:
 adb shell setprop debug.firebase.analytics.app com.usto.cap4test
 ```
 
+Open the "Logcat" tab at the bottom of your IDE and select in the dropdown on the top right "Firebase" to see the debug events:
+
+![image](https://user-images.githubusercontent.com/644550/191925020-aa700433-86d7-44f3-9489-b3a920f7d5ee.png)
+
+
+
+Of if you have the new Logcat view you can just open Logcat to see the debug events
+
+![image](https://user-images.githubusercontent.com/644550/191925325-cfe47a77-7a48-4b2d-8f44-72cdfeae0a8f.png)
+
+
+
+
 
 
 
