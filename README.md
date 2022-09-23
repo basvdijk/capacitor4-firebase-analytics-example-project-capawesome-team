@@ -4,11 +4,79 @@ For me as a web developer it was quite some work to setup the native SDKs. There
 
 Below you'll find how to setup the SDK for Android and iOS after you've configured your project in Firebase.
 
+# Ionic App
+This repo contains an example Ionic VUE project with the Capacitor Firebase Analytics plugin. It was generated using the side-menu boilerplate.
+
+In `main.ts` I've added some code to initialise Firebase Analytics:
+
+```typescript
+const setEnabled = async () => {
+  await FirebaseAnalytics.setEnabled({
+    enabled: true,
+  });
+};
+
+const setCurrentScreen = async () => {
+  await FirebaseAnalytics.setCurrentScreen({
+    screenName: "Login",
+    screenClassOverride: "LoginPage",
+  });
+};
+
+const initAnalytics = async () => {
+  await setEnabled();
+  await setCurrentScreen();
+};
+
+initAnalytics();
+```
+
+In `router/index.ts` I've added code to capture the view changes and send these as screen_view to Analytics
+
+```typescript
+router.beforeEach(async (to, from, next) => {
+  await FirebaseAnalytics.setCurrentScreen({
+    screenName: to.path as string,
+    screenClassOverride: to.path as string,
+  });
+
+  return next();
+});
+```
+
+
 # Setting up Firebase Analytics SDK for iOS - XCode Version 13.4.1 (13F100)
 
-Open XCode `npx cap open ios`
+⚠️ DO NOT ADD THE FIREBASE SDK TO YOUR PROJECT VIA XCODE!!!
+
+## Add FirebaseAnalytics to podfile
+
+Open `ios/App/PodfilePodfile` in your favorite editor
+
+![image](https://user-images.githubusercontent.com/644550/191931847-bab4f752-4200-4aa4-8f50-a85a342c0e62.png)
+
+Add the line 
+
+`pod 'CapacitorFirebaseAnalytics/AnalyticsWithoutAdIdSupport', :path => '../../node_modules/@capacitor-firebase/analytics'`
+
+or 
+
+`pod 'CapacitorFirebaseAnalytics/Analytics', :path => '../../node_modules/@capacitor-firebase/analytics'`
+
+If you want to have the IDFA collection capability enabled
+
+## Installing Pods
+
+In your terminal navigate to the `ios/App` folder (the one with the podfile you've edit)
+
+Run `pod install` You should see something like:
+
+![image](https://user-images.githubusercontent.com/644550/191930930-f7be56bf-783d-4389-969a-8a2f3b2b3e1d.png)
+
 
 ## Add GoogleService-Info.plist
+
+Open XCode by running `npx cap open ios` from the root of your project
 
 Right click on the `App` folder and choose `Add files to "App"`. I've read that dragging the file in could cause issues.
 
@@ -20,48 +88,45 @@ It should now appear in the file tree
 
 ![image](https://user-images.githubusercontent.com/644550/191929040-928c19c0-ac5a-45fd-8d4e-68d82dec0068.png)
 
-## Add Firebase SDK for iOS
+## Enable debugging
 
-Choose File -> Add packages
+From the menu open Product -> Scheme -> Edit scheme
 
-![image](https://user-images.githubusercontent.com/644550/191929306-560a4d9b-fd3f-4516-8d67-7924491e1828.png)
+Click the + button and add `-FIRDebugEnabled` (more info at https://firebase.google.com/docs/analytics/debugview)
 
-Search in the top right for `https://github.com/firebase/firebase-ios-sdk`
+![image](https://user-images.githubusercontent.com/644550/191932437-13dcb75e-4c91-4e94-9d3c-030de2851279.png)
 
-In the `Add to project` dropdown choose "App"
+Click "close"
 
-![image](https://user-images.githubusercontent.com/644550/191929496-5016265b-32c4-4cc7-ac16-54247150954f.png)
+## Package name
 
-Click "Add package"
+Select "App" under the Products folder in the tree. Make sure you have the correct package name set
 
-A popup appears
+Also set the correc team in the "Signing & Capabilities" tab
 
-![image](https://user-images.githubusercontent.com/644550/191929673-b21a7514-c555-4fc3-ac02-404e58f9a6da.png)
+![image](https://user-images.githubusercontent.com/644550/191930426-0cff83ef-3d45-427e-afee-0c52c7472707.png)
 
-Select the package product "FirebaseAnalytics" and click "Add Package"
+## Run the project
 
-![image](https://user-images.githubusercontent.com/644550/191930031-7f9f4e45-0ca1-4245-b955-3c99fa0a9d0e.png)
+![image](https://user-images.githubusercontent.com/644550/191932894-771c67fb-f62d-4c6f-93eb-bbde59698f93.png)
 
-At the bottom of the tree you should see a "Package Dependencies" section
+Run the project
 
-![image](https://user-images.githubusercontent.com/644550/191930133-52a16024-d771-4b15-91c9-70f4941d91c7.png)
+Change screens via the hamburger menu on your iOS device. The output should show:
+
+![image](https://user-images.githubusercontent.com/644550/191932835-954b7381-673c-4b2f-93ec-115e318e9ba1.png)
+
+Your Firebase Analytics should see the events:
+
+![image](https://user-images.githubusercontent.com/644550/191932852-b956932a-8dc6-4a3d-9a10-6951d27cc654.png)
+
+⚠️ Make sure to disable debugging before releasing your project
 
 
-## Add FirebaseAnalytics to podfile
 
-Open the `Podfile`
 
-![image](https://user-images.githubusercontent.com/644550/191928282-f95957b0-499a-4d7f-b60d-35112e7dd8ac.png)
 
-Add the line 
 
-`pod 'CapacitorFirebaseAnalytics/AnalyticsWithoutAdIdSupport', :path => '../../node_modules/@capacitor-firebase/analytics'`
-
-or 
-
-`pod 'CapacitorFirebaseAnalytics/Analytics', :path => '../../node_modules/@capacitor-firebase/analytics'`
-
-If you want to have the IDFA collection capability enabled
 
 
 
@@ -207,11 +272,13 @@ Open the "Logcat" tab at the bottom of your IDE and select in the dropdown on th
 
 ![image](https://user-images.githubusercontent.com/644550/191925020-aa700433-86d7-44f3-9489-b3a920f7d5ee.png)
 
-
-
-Of if you have the new Logcat view you can just open Logcat to see the debug events
+Or if you have the new Logcat view you can just open Logcat to see the debug events
 
 ![image](https://user-images.githubusercontent.com/644550/191925325-cfe47a77-7a48-4b2d-8f44-72cdfeae0a8f.png)
+
+⚠️ Make sure to disable debugging before releasing your project with
+
+`adb shell setprop debug.firebase.analytics.app .none.`
 
 
 
