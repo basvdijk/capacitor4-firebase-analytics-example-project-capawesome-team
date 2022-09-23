@@ -1,0 +1,1 @@
+# capacitor4-firebase-analyics-example-project-capawesome-team
