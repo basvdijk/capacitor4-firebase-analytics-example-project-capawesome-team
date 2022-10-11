@@ -9,7 +9,8 @@ This repo contains an example Ionic VUE project with the Capacitor Firebase Anal
 
 I've added the `@capacitor-firebase/analytics` package
 ```
-npm i @capacitor-firebase/analytics
+npm install @capacitor-firebase/analytics firebase
+npx cap sync
 ```
 
 In `main.ts` I've added some code to initialise Firebase Analytics:
