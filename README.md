@@ -7,7 +7,7 @@ Below you'll find how to setup the SDK for Android and iOS after you've configur
 # Ionic App
 This repo contains an example Ionic VUE project with the Capacitor Firebase Analytics plugin. It was generated using the side-menu boilerplate.
 
-I've added the `@capacitor-firebase/analytics` package
+I've added the `@capacitor-firebase/analytics` and `fireabase` package
 ```
 npm install @capacitor-firebase/analytics firebase
 npx cap sync
