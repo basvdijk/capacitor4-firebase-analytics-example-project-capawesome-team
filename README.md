@@ -82,6 +82,13 @@ Run `pod install` You should see something like:
 
 ## Add GoogleService-Info.plist
 
+This section assumes that you have already [set up a Firebase project](https://firebase.google.com/docs/ios/setup) or [a Google Analytics iOS stream](https://support.google.com/analytics/answer/9304153#stream).
+ 
+Download `GoogleService-Info.plist` from Firebase or Google Analytics console.
+
+* **Firebase**: see [Firebase Help](https://support.google.com/firebase/answer/7015592#ios) for instructions.
+* **Google Analytics**: go to [Google Analytics console](https://analytics.google.com/analytics/), then navigate to "⚙ Admin (sidebar)" -> "Data streams" -> Your iOS App -> "Download GoogleService-Info.plist".
+
 Open XCode by running `npx cap open ios` from the root of your project
 
 Right click on the `App` folder and choose `Add files to "App"`. I've read that dragging the file in could cause issues.
@@ -139,6 +146,13 @@ Your Firebase Analytics should see the events:
 # Setting up Firebase Analytics SDK for Android - Android Studio Dolphin | 2021.3.1
 
 ## Add google-services.json
+
+This section assumes that you have already [set up a Firebase project](https://firebase.google.com/docs/android/setup) or [a Google Analytics Android stream](https://support.google.com/analytics/answer/9304153#stream).
+ 
+Download `google-services.json` from Firebase or Google Analytics console.
+
+* **Firebase**: see [Firebase Help](https://support.google.com/firebase/answer/7015592#android) for instructions.
+* **Google Analytics**: go to [Google Analytics console](https://analytics.google.com/analytics/), then navigate to "⚙ Admin (sidebar)" -> "Data streams" -> Your Android App -> "Download google-services.json".
 
 Open Android Studio with `npx cap open android`
 
