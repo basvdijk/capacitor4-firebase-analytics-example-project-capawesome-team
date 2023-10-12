@@ -57,7 +57,7 @@ router.beforeEach(async (to, from, next) => {
 
 ## Add FirebaseAnalytics to podfile
 
-Open `ios/App/PodfilePodfile` in your favorite editor
+Open `ios/App/Podfile` in your favorite editor
 
 ![image](https://user-images.githubusercontent.com/644550/191931847-bab4f752-4200-4aa4-8f50-a85a342c0e62.png)
 
