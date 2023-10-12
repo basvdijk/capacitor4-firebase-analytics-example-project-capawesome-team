@@ -57,7 +57,7 @@ router.beforeEach(async (to, from, next) => {
 
 ## Add FirebaseAnalytics to podfile
 
-Open `ios/App/PodfilePodfile` in your favorite editor
+Open `ios/App/Podfile` in your favorite editor
 
 ![image](https://user-images.githubusercontent.com/644550/191931847-bab4f752-4200-4aa4-8f50-a85a342c0e62.png)
 
@@ -81,6 +81,13 @@ Run `pod install` You should see something like:
 
 
 ## Add GoogleService-Info.plist
+
+This section assumes that you have already [set up a Firebase project](https://firebase.google.com/docs/ios/setup) or [a Google Analytics iOS stream](https://support.google.com/analytics/answer/9304153#stream).
+ 
+Download `GoogleService-Info.plist` from Firebase or Google Analytics console.
+
+* **Firebase**: see [Firebase Help](https://support.google.com/firebase/answer/7015592#ios) for instructions.
+* **Google Analytics**: go to [Google Analytics console](https://analytics.google.com/analytics/), then navigate to "⚙ Admin (sidebar)" -> "Data streams" -> Your iOS App -> "Download GoogleService-Info.plist".
 
 Open XCode by running `npx cap open ios` from the root of your project
 
@@ -139,6 +146,13 @@ Your Firebase Analytics should see the events:
 # Setting up Firebase Analytics SDK for Android - Android Studio Dolphin | 2021.3.1
 
 ## Add google-services.json
+
+This section assumes that you have already [set up a Firebase project](https://firebase.google.com/docs/android/setup) or [a Google Analytics Android stream](https://support.google.com/analytics/answer/9304153#stream).
+ 
+Download `google-services.json` from Firebase or Google Analytics console.
+
+* **Firebase**: see [Firebase Help](https://support.google.com/firebase/answer/7015592#android) for instructions.
+* **Google Analytics**: go to [Google Analytics console](https://analytics.google.com/analytics/), then navigate to "⚙ Admin (sidebar)" -> "Data streams" -> Your Android App -> "Download google-services.json".
 
 Open Android Studio with `npx cap open android`
 
